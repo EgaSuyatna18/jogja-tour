@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="/assets/landing_page/css/glightbox.min.css">
 	<link rel="stylesheet" href="/assets/landing_page/css/style.css">
 
+	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
 	<title>{{ $title }}</title>
 </head>
@@ -50,30 +51,15 @@
 			<div class="site-navigation">
 				<div class="row">
 					<div class="col-6 col-lg-3">
-						<a href="index.html" class="logo m-0 float-start">Jogja Travel</a>
+						<a href="/" class="logo m-0 float-start">Jogja Travel</a>
 					</div>
 					<div class="col-lg-6 d-none d-lg-inline-block text-center nav-center-wrap">
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li><a href="about.html">About us</a></li>
-							<li class="has-children">
-								<a href="#">Dropdown</a>
-								<ul class="dropdown">
-									<li><a href="#">Menu One</a></li>
-									<li class="has-children">
-										<a href="#">Menu Two</a>
-										<ul class="dropdown">
-											<li><a href="#">Sub Menu One</a></li>
-											<li><a href="#">Sub Menu Two</a></li>
-											<li><a href="#">Sub Menu Three</a></li>
-										</ul>
-									</li>
-									<li><a href="#">Menu Three</a></li>
-								</ul>
-							</li>
-							<li><a href="services.html">Services</a></li>
-							<li><a href="blog.html">Blog</a></li>
-
+							<li><a href="/">Home</a></li>
+							<li><a href="/home/artikel">Artikel</a></li>
+							@if (auth()->check() && auth()->user()->role == 'tourist')
+								<li><a href="/home/tour_guide">Tour Guide</a></li>
+							@endif
 						</ul>
 					</div>
 					<div class="col-6 col-lg-3 text-lg-end">
@@ -218,5 +204,7 @@
 		<script src="/assets/landing_page/js/flatpickr.js"></script>
 		<script src="/assets/landing_page/js/glightbox.min.js"></script>
 		<script src="/assets/landing_page/js/custom.js"></script>
+
+		@extends('layouts.partial.toast')
 	</body>
 	</html>
